@@ -1,0 +1,24 @@
+{
+  "name": "portal_noticias",
+  "version": "1.0.0",
+  "description": "Site de noticias",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Felipe Reis",
+  "license": "ISC",
+  "dependencies": {
+    "ejs": "^2.5.7",
+    "express": "^4.16.2"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/reis-fs/portal_noticias.git"
+  },
+  "bugs": {
+    "url": "https://github.com/reis-fs/portal_noticias/issues"
+  },
+  "homepage": "https://github.com/reis-fs/portal_noticias#readme"
+}
