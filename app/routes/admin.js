@@ -11,9 +11,9 @@ module.exports = function(app){
         //conexão
         var con = app.config.dbConnection(); 
         //model
-        var noticiasModel = app.app.models.noticiasModel;
+        var noticiasModel = new app.app.models.NoticiasDAO(con);
         //salvarNoticia
-        noticiasModel.salvarNoticia(noticia, con, function(error, result){
+        noticiasModel.salvarNoticia(noticia, function(error, result){
             res.redirect('/noticias'); //direciona para a página de noticias e evita um f5 do usuário duplicando o envio do formulário
         });
     });
