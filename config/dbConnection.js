@@ -1,11 +1,11 @@
 var mysql = require('mysql');
 
 var connMySQL = function(){
-    
+
     return mysql.createConnection({
         host: '127.0.0.1',
         user: 'root',
-        password: 'Flp@123',
+        password: '1234',
         database: 'portal_noticias'
     });
 }
