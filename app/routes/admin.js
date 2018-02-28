@@ -1,15 +1,29 @@
 module.exports = function(app){
     app.get('/form_add_noticia', function(req, res){
-        res.render("admin/form_add_noticia");
+        res.render("admin/form_add_noticia", {validacao : {}, noticia : {}});
     });
 
     //método de envio do formulario via post, usar "app.post"
     app.post('/noticias/salvar', function(req, res){
         var noticia = req.body;
 
+        //validações
+        req.assert('titulo','Título obrigatório').notEmpty();
+        req.assert('resumo','Resumo obrigatório').notEmpty();
+        req.assert('resumo','Resumo deve conter entre 10 e 100 caracteres').len(10,100);
+        req.assert('autor','Autor obrigatório').notEmpty();
+        //isDate() foi retirado do express-validator, solução foi usar isISO8601.
+        req.assert('data_noticia','Data obrigatória').notEmpty().isISO8601({format: 'YYYY-MM-DD'});
+        req.assert('noticia','Notícia obrigatória').notEmpty();
 
+        var erros = req.validationErrors();
+
+        if(erros){
+          res.render("admin/form_add_noticia", {validacao : erros, noticia : noticia});
+          return;
+        }
         //conexão
-        var con = app.config.dbConnection(); 
+        var con = app.config.dbConnection();
         //model
         var noticiasModel = new app.app.models.NoticiasDAO(con);
         //salvarNoticia
@@ -18,4 +32,3 @@ module.exports = function(app){
         });
     });
 };
-  
