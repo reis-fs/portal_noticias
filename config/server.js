@@ -15,7 +15,8 @@ app.use(expressValidator());
 consign()
     .include('app/routes')
     .then('config/dbConnection.js') //neste caso é preciso apontar a extensão
-    .then('app/models') 
-    .into(app); 
+    .then('app/models')
+    .then('app/controllers')
+    .into(app);
 
 module.exports = app;
