@@ -10,6 +10,7 @@ app.set('views','./app/views');
 //passar o body-parser parametrizando como irá tratar os formulários: urlencoded com parametros em json
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(expressValidator());
+app.use(express.static('./app/public'));
 
 //consign faz um scan na aplicação e inclui os modulos dentro do servidor(app)
 consign()
